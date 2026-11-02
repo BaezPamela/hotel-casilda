@@ -1,9 +1,8 @@
 (() => {
   'use strict';
 
-  // ---- Configuración (completar con datos reales) ----
-  const WHATSAPP_NUMBER = '540000000000'; // código país + área + número, sin signos
-
+  
+  const WHATSAPP_NUMBER = '543464623650'; 
   // Año del footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -96,4 +95,29 @@
     msg.textContent = 'Te abrimos WhatsApp para enviar tu consulta.';
     form.reset();
   });
+  // Botón "Volver arriba"
+const backToTop = document.querySelector('.site-footer a[href="#top"]');
+
+if (backToTop) {
+  backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+  // Mostrar el botón de WhatsApp después de un pequeño scroll
+const whatsappBtn = document.querySelector('.whatsapp-float');
+
+if (whatsappBtn) {
+  whatsappBtn.style.opacity = '0';
+  whatsappBtn.style.pointerEvents = 'none';
+
+  const toggleWhatsapp = () => {
+    const visible = window.scrollY > 200;
+    whatsappBtn.style.opacity = visible ? '1' : '0';
+    whatsappBtn.style.pointerEvents = visible ? 'auto' : 'none';
+  };
+
+  window.addEventListener('scroll', toggleWhatsapp, { passive: true });
+  toggleWhatsapp();
+}
 })();

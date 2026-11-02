@@ -172,3 +172,43 @@ p { margin: 0 0 1em; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+/* Botón flotante de WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+  transform: translateY(-3px) scale(1.05);
+  background-color: #1ebe5b;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+.whatsapp-float:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* En pantallas muy pequeñas lo achicamos un poco */
+@media (max-width: 480px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
