@@ -67,6 +67,21 @@
   egreso.min = today;
   ingreso.addEventListener('change', () => { egreso.min = ingreso.value || today; });
 
+  // Carrusel de logos: duplica la lista para un loop continuo y sin saltos
+const logos = document.querySelector('.logos');
+if (logos) {
+  const track = logos.querySelector('.logos-track');
+  const originals = Array.from(track.children);
+  originals.forEach(li => {
+    const clone = li.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+  // Velocidad constante: ~4 segundos por logo
+  logos.style.setProperty('--logos-duration', `${Math.max(20, originals.length * 4)}s`);
+  logos.classList.add('is-animated');
+}
+
   // Formulario -> WhatsApp
   form.addEventListener('submit', (e) => {
     e.preventDefault();
